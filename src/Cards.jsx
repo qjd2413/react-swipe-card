@@ -15,17 +15,35 @@ class SwipeCards extends Component {
         };
         this.removeCard = this.removeCard.bind(this);
         this.setSize = this.setSize.bind(this);
+        this.setIndex = this.setIndex.bind(this);
+        if(this.props.getUndo) {
+            this.props.getUndo(this.undo.bind(this));
+        }
     }
+    setIndex() {
+        if(this.props.setIndex) {
+            this.props.setIndex(this.state.index + 1);
+        }
+    }
+
     removeCard(side, cardId) {
         const { children, onEnd } = this.props;
         setTimeout(() => this.setState({ [`alert${side}`]: false }), 300);
 
         if (children.length === this.state.index + 1 && onEnd) onEnd();
 
+        this.setIndex();
         this.setState({
             index: this.state.index + 1,
             [`alert${side}`]: true
         });
+    }
+
+    undo() {
+        this.setIndex();
+        if(this.state.index > 0) {
+            this.setState({ index: this.state.index - 1 });
+        }
     }
 
     componentDidMount() {

@@ -18,8 +18,8 @@ class DraggableCard extends Component {
         this.resetPosition = this.resetPosition.bind(this);
         this.handlePan = this.handlePan.bind(this);
         this.swipeHandler = this.swipeHandler.bind(this);
-        if (props.getButtonHandler) {
-            props.getButtonHandler(this.swipeHandler);
+        if(this.props.getButtonHandler) {
+            this.props.getButtonHandler(this.swipeHandler);
         }
     }
     resetPosition() {
@@ -39,7 +39,6 @@ class DraggableCard extends Component {
         });
     }
     swipeHandler(direction) {
-        console.log('sh ' + direction);
         if (this.props[`onSwipe${direction}`]) {
             this.props[`onSwipe${direction}`]();
             this.props[`onOutScreen${direction}`](this.props.index);
