@@ -30,7 +30,7 @@ class Card extends Component {
         const {
             initialPosition: { x, y }
         } = this.state;
-        const { className = 'inactive' } = this.props;
+        const className = this.props.active ? '' : 'inactive';
         var style = {
             ...translate3d(x, y),
             zIndex: this.props.index,

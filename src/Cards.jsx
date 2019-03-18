@@ -28,7 +28,7 @@ class SwipeCards extends Component {
 
     removeCard(side, cardId) {
         const { children, onEnd } = this.props;
-        setTimeout(() => this.setState({ [`alert${side}`]: false }), 300);
+        setTimeout(() => this.setState({ [`alert${side}`]: false }), 500);
 
         if (children.length === this.state.index + 1 && onEnd) onEnd();
 
