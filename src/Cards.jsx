@@ -16,13 +16,15 @@ class SwipeCards extends Component {
         this.removeCard = this.removeCard.bind(this);
         this.setSize = this.setSize.bind(this);
         this.setIndex = this.setIndex.bind(this);
+        this.setIndex(this.state.index);
         if(this.props.getUndo) {
             this.props.getUndo(this.undo.bind(this));
         }
     }
-    setIndex() {
+
+    setIndex(index) {
         if(this.props.setIndex) {
-            this.props.setIndex(this.state.index + 1);
+            this.props.setIndex(index);
         }
     }
 
@@ -32,17 +34,19 @@ class SwipeCards extends Component {
 
         if (children.length === this.state.index + 1 && onEnd) onEnd();
 
-        this.setIndex();
+        const index = this.state.index + 1;
         this.setState({
-            index: this.state.index + 1,
+            index,
             [`alert${side}`]: true
         });
+        this.setIndex(index);
     }
 
     undo() {
-        this.setIndex();
         if(this.state.index > 0) {
-            this.setState({ index: this.state.index - 1 });
+            const index = this.state.index - 1;
+            this.setState({ index });
+            this.setIndex(index);
         }
     }
 
