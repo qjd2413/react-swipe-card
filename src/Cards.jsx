@@ -20,6 +20,7 @@ class SwipeCards extends Component {
         if(this.props.getUndo) {
             this.props.getUndo(this.undo.bind(this));
         }
+        this.element = React.createRef();
     }
 
     setIndex(index) {
@@ -59,7 +60,7 @@ class SwipeCards extends Component {
     }
 
     setSize() {
-        const container = ReactDOM.findDOMNode(this);
+        const container = this.element.current;
         const containerSize = {
             x: container.offsetWidth,
             y: container.offsetHeight
@@ -71,7 +72,7 @@ class SwipeCards extends Component {
         const { index, containerSize } = this.state;
         const { children, className, onSwipeTop, onSwipeBottom } = this.props;
         if (!containerSize.x || !containerSize.y)
-            return <div className={className} />;
+            return <div ref={this.element} className={className} />;
 
         const _cards = children.reduce((memo, c, i) => {
             if (index > i) return memo;
@@ -92,7 +93,7 @@ class SwipeCards extends Component {
         }, []);
 
         return (
-            <div className={className}>
+            <div ref={this.element} className={className}>
                 {DIRECTIONS.map(d => (
                     <div
                         key={d}
