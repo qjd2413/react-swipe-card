@@ -33,7 +33,6 @@ class Card extends Component {
         const className = this.props.active ? '' : 'inactive';
         var style = {
             ...translate3d(x, y),
-            zIndex: this.props.index,
             ...this.props.style
         };
 
