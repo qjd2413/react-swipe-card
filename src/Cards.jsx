@@ -76,7 +76,6 @@ class SwipeCards extends Component {
 
         const cardCount = 10;
         const _cards = children.reduce((memo, c, i) => {
-            console.log(index, i);
             if (index > i) return memo;
             const props = {
                 key: i,
