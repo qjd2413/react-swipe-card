@@ -74,7 +74,9 @@ class SwipeCards extends Component {
         if (!containerSize.x || !containerSize.y)
             return <div ref={this.element} className={className} />;
 
+        const cardCount = 10;
         const _cards = children.reduce((memo, c, i) => {
+            console.log(index, i);
             if (index > i) return memo;
             const props = {
                 key: i,
@@ -104,7 +106,7 @@ class SwipeCards extends Component {
                         {this.props[`alert${d}`]}
                     </div>
                 ))}
-                <div id="cards">{_cards}</div>
+                <div id="cards">{_cards.slice(-cardCount)}</div>
             </div>
         );
     }

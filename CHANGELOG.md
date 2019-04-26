@@ -1,3 +1,8 @@
+<a name="0.1.8"></a>
+## [0.1.8](https://github.com/alexandre-garrec/react-swipe-card/compare/0.1.7...0.1.8) (2019-03-21)
+
+
+
 <a name="0.1.6"></a>
 ## [0.1.6](https://github.com/alexandre-garrec/react-swipe-card/compare/0.1.4...0.1.6) (2019-03-21)
 
